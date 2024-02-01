@@ -24,3 +24,12 @@ def juega (tablero, columna, ficha):
             c[indice] = ficha
             break
         indice -= 1
+
+def esta_llena(tablero, columna):
+    '''
+    recorremos todos los elementos de la columna
+    si algún elemento es 0, res es falso
+    si todos los elementos son diferents de 0, res es verdadero
+    '''
+    c = tablero[columna]
+    return 0 not in c
