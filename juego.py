@@ -1,11 +1,3 @@
-def crea_tablero(cols, rows):
-    res = []    
-    for i in range(cols):
-        res2 = []
-        for j in range(rows):
-            res2.append(0)
-        res.append(res2)
-    return res
 
 
 board=(crea_tablero(6,7))
@@ -19,7 +11,7 @@ def busca_hueco(columna):
     '''
     res = 5
     for i in range(len(board[0])-1):
-        if board[i][columna]!=0:
+        if board[columna][i]!=0:
             res = i-1
     return res
 

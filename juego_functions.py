@@ -7,4 +7,20 @@ def crea_tablero(fila, columna):
         salida.append(lista2)
     return salida
 
-print(crea_tablero(4,3))
+
+
+def juega (tablero, columna, ficha):
+    '''
+    elegir la columna del tablero
+    recorrer la columna de atrás a adelante
+    al encontrar el primer 0 pones la ficha
+    '''
+
+    c = tablero[columna]
+
+    indice = len(c)-1
+    while indice >= 0:
+        if c[indice] == 0:
+            c[indice] = ficha
+            break
+        indice -= 1
