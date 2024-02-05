@@ -61,6 +61,20 @@ def victoria_vertical_col(tablero, pos_columna,ficha):
         ix += 1
     return False
 
+def victoria_horizontal_fila(tablero, pos_fila, ficha):
+    contador_iguales = 0
+
+    for columna in tablero:
+        if columna[pos_fila] == ficha:
+            contador_iguales += 1
+        else:
+            contador_iguales = 0
+        
+        if contador_iguales == 4:
+            return True
+    return False
+
+
 def victoria (tablero, ficha):
     '''
     Obtener el número de columnas de mi tablero
@@ -69,22 +83,27 @@ def victoria (tablero, ficha):
     si es false ir a la siguiente
     '''
     num_cols = len(tablero)
+    num_filas = len(tablero[0])
     for num_col in range(num_cols):
         
         if victoria_vertical_col(tablero,num_col,ficha):
             return True
+    for num_fila in range(num_filas):
+        if victoria_horizontal_fila(tablero,num_fila,ficha):
+            return True
+    return False
         
 
-def victoria_horizontal(tablero):
-    victoria = False 
-
-    i = 0
-    while i < len(tablero) - 3:
-        j = 0
-        while j < len(tablero[0]):
-            if tablero[i][j] == tablero[i + 1][j] == tablero[i + 2][j] == tablero[i + 3][j] and tablero[i][j] != 0:
-                victoria = True
-            j += 1
-        i += 1
-
-    return victoria
+#def victoria_horizontal(tablero):
+#    victoria = False 
+#
+#    i = 0
+#    while i < len(tablero) - 3:
+#        j = 0
+#        while j < len(tablero[0]):
+#            if tablero[i][j] == tablero[i + 1][j] == tablero[i + 2][j] == tablero[i + 3][j] and tablero[i][j] != 0:
+#                victoria = True
+#            j += 1
+#        i += 1
+#
+#    return victoria
