@@ -1,4 +1,4 @@
-from juego_functions import crea_tablero, juega, esta_llena
+from juego_functions import crea_tablero, juega, esta_llena, victoria_vertical_col
 
 def test_crear_tablero():
     tab = crea_tablero(4,3)
@@ -29,4 +29,26 @@ def test_comprobar_columna_llena():
     tab1 = crea_tablero(6,7)
     juega(tab, 2, 1)
 
-   
+def test_victoria_vertical_columna():
+    tab = crea_tablero(6,7)
+
+
+    assert victoria_vertical_col(tab,2,"x") == False
+    juega(tab,2,'x')
+    assert victoria_vertical_col(tab,2,"x") == False
+    juega(tab,2,'x')
+    assert victoria_vertical_col(tab,2,"x") == False
+    juega(tab,2,'x')
+    assert victoria_vertical_col(tab,2,"x") == False
+    juega(tab,2,'x')
+    assert victoria_vertical_col(tab,2,"x") == True
+
+#def test_victoria_horizontal():
+#    tab = [[0,0,0,0,0,0,0],
+#           [0,0,0,0,0,0,0],
+#           ["x",0,0,0,0,0,0],
+#           ["x",0,0,0,0,0,0],
+#           ["x",0,0,0,0,0,0],
+#           ["x",0,0,0,0,0,0]]
+#
+#    assert victoria_horizontal(tab) == True

@@ -33,3 +33,58 @@ def esta_llena(tablero, columna):
     '''
     c = tablero[columna]
     return 0 not in c
+
+#def victoria_vertical(tablero):
+#    victoria = False
+#    i = 0
+#    while (i<=(len(tablero)-1)) and victoria == False:
+#        j = 0
+#        while (j<=(len(tablero[i])-4)):
+#            if(tablero[i][j]==tablero[i][j+1] and tablero[i][j]==tablero[i][j+2] and tablero[i][j]==tablero[i][j+3]) and tablero[i][j]!=0:
+#                victoria = True
+#            j+=1
+#        i+=1
+#    return victoria
+
+def victoria_vertical_col(tablero, pos_columna,ficha):
+    contador_iguales = 0
+    columna = tablero[pos_columna]
+    ix = 0
+    while ix < len(columna):
+        if columna[ix] == ficha:
+            contador_iguales += 1
+        else:
+            contador_iguales = 0
+        
+        if contador_iguales == 4:
+            return True
+        ix += 1
+    return False
+
+def victoria (tablero, ficha):
+    '''
+    Obtener el número de columnas de mi tablero
+    iterar robre range(num_columnas)
+    para cada columna, devolver True si es true
+    si es false ir a la siguiente
+    '''
+    num_cols = len(tablero)
+    for num_col in range(num_cols):
+        
+        if victoria_vertical_col(tablero,num_col,ficha):
+            return True
+        
+
+def victoria_horizontal(tablero):
+    victoria = False 
+
+    i = 0
+    while i < len(tablero) - 3:
+        j = 0
+        while j < len(tablero[0]):
+            if tablero[i][j] == tablero[i + 1][j] == tablero[i + 2][j] == tablero[i + 3][j] and tablero[i][j] != 0:
+                victoria = True
+            j += 1
+        i += 1
+
+    return victoria
